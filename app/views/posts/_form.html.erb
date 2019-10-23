@@ -21,6 +21,16 @@
     <%= form.rich_text_area :body %>
   </div>
 
+  <div class="field">
+    <%= form.label :public %>
+    <%= form.check_box :public %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Genre %>
+    <%= form.select(:Genre, options_for_select([['Sport',], ['World'], ['Business'], ['Culture'], ['Design'], ['Politics'], ['Opinion'], ['Science'], ['Health'], ['Travel'], ['Technology']])) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
