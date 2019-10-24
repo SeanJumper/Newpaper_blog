@@ -10,8 +10,10 @@ class ContentController < ApplicationController
   end
 
   def sport
-        # get all posts where genre = ^ and public = true
-
+      # this condition selects all from the post where Sport is the Genre and Public is true 
+      # SELECT "posts".* FROM "posts" WHERE "posts"."Genre" = ? AND "posts"."Public" = ?  [["Genre", "Sport"], ["Public", 1]]
+      @posts = Post.where(Genre:'Sport',Public:true)
+      
   end
 
   def design
