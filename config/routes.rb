@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'content/Opinion'
   get 'content/technology'
   get 'content/health'
+  match '/checkout' => 'checkout#create', via: :post
   devise_for :users
   get 'welcome/index'
   resources :posts

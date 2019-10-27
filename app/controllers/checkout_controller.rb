@@ -8,28 +8,29 @@ class CheckoutController < ApplicationController
     Braintree::Transaction::Status::Settling,
     Braintree::Transaction::Status::SubmittedForSettlement,
   ]
-  def index
-gateway = Braintree::Gateway.new(
+def gateway
+@gateway = Braintree::Gateway.new(
   :environment => :sandbox,
   :merchant_id => 'g82dbc9xdvtp4yx9',
   :public_key => '7gnp3pdhks7bfsr6',
   :private_key => 'c35c38c1ce0eb6b9643e273347de08fa',
 )
-
-
-@ctoken = gateway.client_token.generate()
-puts @ctoken
 end
+ def index
+  @ctoken = gateway.client_token.generate()
+  puts @ctoken
+ end
 
-  def show
+def show
     @transaction = gateway.transaction.find(params[:id])
     @result = _create_result_hash(@transaction)
-  end
+end
 
-  def create
-    post '/submit' do
-      nonce = params["payment_method_nonce"] #for sinatra integration
-      @result = gateway.transaction.sale(
+def create
+    
+      nonce = params["payment_method_nonce"]
+      
+      result = gateway.transaction.sale(
         :amount => "10.00",
         :payment_method_nonce => nonce, 
         :options => {
@@ -37,14 +38,16 @@ end
         }
       )
 
+
     if result.success? || result.transaction
-      redirect_to checkout_path(result.transaction.id)
+      puts (result.transaction.id)
     else
       error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
       flash[:error] = error_messages
       redirect_to new_checkout_path
     end
-  end
+  
+end
 
   def _create_result_hash(transaction)
     status = transaction.status
