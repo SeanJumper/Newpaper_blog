@@ -29,6 +29,7 @@ end
 def create
     
       nonce = params["payment_method_nonce"]
+      #amount = params["amount"]
       
       result = gateway.transaction.sale(
         :amount => "10.00",
@@ -41,10 +42,11 @@ def create
 
     if result.success? || result.transaction
       puts (result.transaction.id)
+      redirect_to checkout_txnResult_path(result.transaction.id)
     else
       error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
       flash[:error] = error_messages
-      redirect_to new_checkout_path
+      redirect_to checkout_index_path
     end
   
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'checkout/index'
+  get 'checkout/txnResult'
   get 'content/world'
   get 'content/politics'
   get 'content/sport'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get 'content/Opinion'
   get 'content/technology'
   get 'content/health'
+
   match '/checkout' => 'checkout#create', via: :post
   devise_for :users
   get 'welcome/index'
