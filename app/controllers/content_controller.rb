@@ -2,10 +2,12 @@ class ContentController < ApplicationController
 
   def world
     # get all posts where genre = ^ and public = true
+    @posts = Post.where(Genre:'world',Public:true)
   end
 
   def politics
         # get all posts where genre = ^ and public = true
+        @posts = Post.where(Genre:'politics',Public:true)
 
   end
 
@@ -18,42 +20,47 @@ class ContentController < ApplicationController
 
   def design
         # get all posts where genre = ^ and public = true
+        @posts = Post.where(Genre:'design',Public:true)
 
   end
 
   def culture
         # get all posts where genre = ^ and public = true
+        @posts = Post.where(Genre:'culture',Public:true)
 
   end
 
   def business
         # get all posts where genre = ^ and public = true
+        @posts = Post.where(Genre:'business',Public:true)
 
   end
 
   def travel
         # get all posts where genre = ^ and public = true
+        @posts = Post.where(Genre:'travel',Public:true)
 
   end
 
   def science
         # get all posts where genre = ^ and public = true
+        @posts = Post.where(Genre:'science',Public:true)
 
   end
 
   def opinion
         # get all posts where genre = ^ and public = true
-
+        @posts = Post.where(Genre:'opinion',Public:true)
   end
 
   def technology
         # get all posts where genre = ^ and public = true
-
+        @posts = Post.where(Genre:'technology',Public:true)
   end
 
   def health
         # get all posts where genre = ^ and public = true
-
+        @posts = Post.where(Genre:'health',Public:true)
   end
   
 end

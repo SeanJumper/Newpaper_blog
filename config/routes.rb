@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'checkout/index'
   get 'content/world'
   get 'content/politics'
   get 'content/sport'
