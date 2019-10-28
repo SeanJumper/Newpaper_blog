@@ -1,4 +1,4 @@
-class CheckoutController < ApplicationController
+class CheckoutsController < ApplicationController
   TRANSACTION_SUCCESS_STATUSES = [
     Braintree::Transaction::Status::Authorizing,
     Braintree::Transaction::Status::Authorized,
@@ -8,48 +8,37 @@ class CheckoutController < ApplicationController
     Braintree::Transaction::Status::Settling,
     Braintree::Transaction::Status::SubmittedForSettlement,
   ]
-def gateway
-@gateway = Braintree::Gateway.new(
-  :environment => :sandbox,
-  :merchant_id => 'g82dbc9xdvtp4yx9',
-  :public_key => '7gnp3pdhks7bfsr6',
-  :private_key => 'c35c38c1ce0eb6b9643e273347de08fa',
-)
-end
- def index
-  @ctoken = gateway.client_token.generate()
-  puts @ctoken
- end
 
-def show
+  def new
+    @ctoken = gateway.client_token.generate()
+    puts @ctoken
+  end
+
+  def show
     @transaction = gateway.transaction.find(params[:id])
     @result = _create_result_hash(@transaction)
-end
+  end
 
-def create
-    
-      nonce = params["payment_method_nonce"]
-      #amount = params["amount"]
-      
-      result = gateway.transaction.sale(
-        :amount => "10.00",
-        :payment_method_nonce => nonce, 
-        :options => {
-          :submit_for_settlement => true
-        }
-      )
+  def create
+    amount = params["amount"] # In production you should not take amounts directly from clients
+    nonce = params["payment_method_nonce"]
 
+    result = gateway.transaction.sale(
+      amount: amount,
+      payment_method_nonce: nonce,
+      :options => {
+        :submit_for_settlement => true
+      }
+    )
 
     if result.success? || result.transaction
-      puts (result.transaction.id)
-      redirect_to checkout_txnResult_path(result.transaction.id)
+      redirect_to checkout_path(result.transaction.id)
     else
       error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
       flash[:error] = error_messages
-      redirect_to checkout_index_path
+      redirect_to new_checkout_path
     end
-  
-end
+  end
 
   def _create_result_hash(transaction)
     status = transaction.status
@@ -69,10 +58,13 @@ end
     end
   end
 
-  
+  def gateway
+    @gateway = Braintree::Gateway.new(
+      :environment => :sandbox,
+      :merchant_id => 'g82dbc9xdvtp4yx9',
+      :public_key => '7gnp3pdhks7bfsr6',
+      :private_key => 'c35c38c1ce0eb6b9643e273347de08fa',
+    )
+    end
+    
 end
-
-
-      
-   
-  
