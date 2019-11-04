@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'data/index'
   #get 'checkout/index'
   #get 'checkout/txnResult'
   get 'content/world'
