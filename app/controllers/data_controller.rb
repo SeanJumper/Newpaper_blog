@@ -1,21 +1,27 @@
 class DataController < ApplicationController
- #@words = []
+#encoding: utf-8
+
   def index
-    @words = []
-    @cleanWords =[]
+  @words = []
+  @cleanWords =[]
     # SELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?  [["record_id", 10], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
   sql = "SELECT body from action_text_rich_texts WHERE body IS NOT NULL "
   @result = ActiveRecord::Base.connection.execute(sql)
-
+    
   @result.each do |x|
    #words = []
    @cleanWords =[]
     #get the values only from the hash
     values = x.values
+  
     #convert it to string 
     strValue = values.to_s
+    #to utf 8
+    encodedValue = strValue.gsub(160.chr("UTF-8"),"") # this beautiful little function removes &nbsp; -> LIFE SAVER
+    puts encodedValue
     # remove html tags
-    rmvHtml =strValue.gsub(/(<[^>]*>)|\n|\t/s) {""}
+    rmvHtml = encodedValue.gsub(/(<[^>]*>)|\n|\t/s) {""}  
+    
     # remove additional chars
     rmvExtraChars = rmvHtml.tr('[]',"")
     # still some chars left, gotta get rid of them
@@ -41,6 +47,20 @@ class DataController < ApplicationController
     # once this has is created we can start to generate graphics for an admin
     # user to understand the over all sentiment of the websites content
     # And thats the basic iteration of the data analysis concept of this application.
+
+    hCount = Hash.new
+    @cleanWords.each {|w|
+    if hCount.has_key?(w)
+      hCount[w] = hCount[w]+1
+    else
+      hCount[w]=1
+    end
+    }
+  
+    hCount.sort{|a,b| a[1]<=>b[1]}.each { |elem|
+      puts "\"#{elem[0]}\" has #{elem[1]} occurrences"
+     }
+    
 
   end # end of the index 
 
