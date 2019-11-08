@@ -18,7 +18,7 @@ class DataController < ApplicationController
     strValue = values.to_s
     #to utf 8
     encodedValue = strValue.gsub(160.chr("UTF-8"),"") # this beautiful little function removes &nbsp; -> LIFE SAVER
-    puts encodedValue
+    #puts encodedValue
     # remove html tags
     rmvHtml = encodedValue.gsub(/(<[^>]*>)|\n|\t/s) {""}  
     
@@ -43,27 +43,32 @@ class DataController < ApplicationController
     # there has to be a smarter was to do this!!!!! this is completely stupid and a bad comsumption of resources
     # annnnyway now we have one array with each post split by white space so we can actually start 
     # doing some mad $h!t
-    p @cleanWords # is the final array of all the posts, we can use this to create a words count hash
+   # p @cleanWords # is the final array of all the posts, we can use this to create a words count hash
     # once this has is created we can start to generate graphics for an admin
     # user to understand the over all sentiment of the websites content
     # And thats the basic iteration of the data analysis concept of this application.
 
-    hCount = Hash.new
+    @hCount = Hash.new
     @cleanWords.each {|w|
-    if hCount.has_key?(w)
-      hCount[w] = hCount[w]+1
+    if @hCount.has_key?(w)
+      @hCount[w] = @hCount[w]+1
     else
-      hCount[w]=1
+      @hCount[w]=1
     end
     }
-  
-    hCount.sort{|a,b| a[1]<=>b[1]}.each { |elem|
-      puts "\"#{elem[0]}\" has #{elem[1]} occurrences"
+    #sort the hash and print the results
+    @hCount.sort{|a,b| a[1]<=>b[1]}.each { |elem|
+     "\"#{elem[0]}\" has #{elem[1]} occurrences"
      }
+     # end of sort
+    @hCount.delete('""')
+
+    puts @hCount
+  
     
 
   end # end of the index 
 
-  # maybe here we can define function for word count ;) 
+  
   
 end

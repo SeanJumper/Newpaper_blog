@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 # apparently
+# for creating charts and graphs
+gem 'chartkick'
+#group date to make chartkick easiers
+gem 'groupdate'
+
 #gem 'image_magick'
 #auth 
 gem 'devise'
