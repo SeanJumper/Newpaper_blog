@@ -1,5 +1,19 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<div class="container-fluid">
+<canvas id="myChart" width="930" height="300" class="chartjs-render-monitor" style="display: block; width: 930px; height: 300px;"></canvas>
+</div>
+<br>
+
+<div class="chartjs-render-monitor" >
+<%= line_chart User.group_by_week(:created_at).count %>
+</div>
+<br>
+<div class="container-fluid" class="chartjs-render-monitor" style="display: block; width: 930px; height: 300px;">
+<%= pie_chart User.group_by_week(:created_at).count %>
+</div>
+<br>
+
 <script>
+
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {

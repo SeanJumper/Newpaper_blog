@@ -1,10 +1,10 @@
 class DataController < ApplicationController
 #encoding: utf-8
-#before_action :authenticate_user!
+before_action :authenticate_user!
 before_action :authenticate_admin!
 def authenticate_admin!
   # check if current user is admin
-  unless current_user.admin
+  unless current_user.admin?
     # if current_user is not admin redirect to some route
     redirect_to '/'
   end
