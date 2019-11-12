@@ -4,11 +4,11 @@
 <br>
 
 <div class="chartjs-render-monitor" >
-<%= line_chart User.group_by_week(:created_at).count %>
+<%= line_chart User.group_by_day(:created_at).count %>
 </div>
 <br>
 <div class="container-fluid" class="chartjs-render-monitor" style="display: block; width: 930px; height: 300px;">
-<%= pie_chart User.group_by_week(:created_at).count %>
+<%= pie_chart User.group_by_day(:created_at).count %>
 </div>
 <br>
 
