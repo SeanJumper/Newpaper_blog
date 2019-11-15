@@ -16,6 +16,10 @@ Rails.application.routes.draw do
  # match '/checkout' => 'checkout#create', via: :post
   devise_for :users
   resources :posts
+
+resources :users do
+  resources :checkouts
+end
   
 resources :data do
   get "word_count"

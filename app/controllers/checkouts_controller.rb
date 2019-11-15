@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
- 
+  before_action :authenticate_user!
+  
 
   def new
     @ctoken = gateway.client_token.generate()
@@ -8,7 +9,7 @@ class CheckoutsController < ApplicationController
 
   def show
     @transaction = gateway.subscription.find(params[:id])
-    p @transaction
+    #p @transaction
     #@result = _create_result_hash(@transaction)
   end
 
@@ -33,7 +34,13 @@ class CheckoutsController < ApplicationController
         :payment_method_token => token,
         :plan_id => "KieransPlan",
       )   
-    #  p newSubscription.subscription.id
+    # add subscription to the current user
+    id = current_user.id
+    @user = User.find(id)
+
+    @user.update_columns(subsId:newSubscription.subscription.id)
+
+    #@user.subsId = newSubscription.subscription.id
         
     if newSubscription.success?
       redirect_to checkout_path(newSubscription.subscription.id)
@@ -78,4 +85,7 @@ class CheckoutsController < ApplicationController
     )
     end
     
+   
+   
+  
 end
