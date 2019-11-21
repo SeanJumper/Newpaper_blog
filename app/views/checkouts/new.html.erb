@@ -11,15 +11,28 @@
 
       <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
         <section>
-          <label for="amount">
-            <span class="input-label">Amount</span>
+          <label for="First Name">
+            <span class="input-label">First Name:</span>
             <div class="input-wrapper amount-wrapper">
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+              <input id="first_name" name="first_name" type="text" min="1" placeholder="First_name">
+            </div>
+          </label>
+          <label for="Last Name">
+            <span class="input-label">Last Name:</span>
+            <div class="input-wrapper amount-wrapper">
+              <input id="last_name" name="last_name" type="text" min="1" placeholder="last_name">
+            </div>
+          </label>
+          <label for="Email">
+            <span class="input-label">Email:</span>
+            <div class="input-wrapper email-wrapper">
+              <input id="email" name="email" type="email" min="1" placeholder="abc123@email.com">
             </div>
           </label>
 
           <div class="bt-drop-in-wrapper">
-            <div id="bt-dropin"></div>
+            <div id="bt-dropin">
+            </div>
           </div>
         </section>
 

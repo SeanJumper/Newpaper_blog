@@ -8,7 +8,9 @@ gem 'chartkick'
 #group date to make chartkick easiers
 gem 'groupdate'
 
-#gem 'image_magick'
+#kieran test gem
+gem 'kieran_gem', '~> 10.0' #version 3  
+#gem 'image_magick' 
 #auth 
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

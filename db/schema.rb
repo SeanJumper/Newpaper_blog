@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_144757) do
+ActiveRecord::Schema.define(version: 2019_11_15_160609) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_15_144757) do
     t.integer "user_id"
     t.boolean "public"
     t.string "Genre"
+    t.boolean "premium", default: false
   end
 
   create_table "users", force: :cascade do |t|

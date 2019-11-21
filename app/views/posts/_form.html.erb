@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :premium %>
+    <%= form.check_box :premium %>
+  </div>
+
+  <div class="field">
     <%= form.label :Genre %>
     <%= form.select(:Genre, options_for_select([['Sport',], ['World'], ['Business'], ['Culture'], ['Design'], ['Politics'], ['Opinion'], ['Science'], ['Health'], ['Travel'], ['Technology']])) %>
   </div>

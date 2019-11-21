@@ -16,10 +16,14 @@ class CheckoutsController < ApplicationController
   def create
    # amount = params["amount"] # In production you should not take amounts directly from clients
     nonce = params["payment_method_nonce"]
+    first_name =params["first_name"]
+    last_name = params["last_name"]
+    email = params["email"]
 
     result = gateway.customer.create(
-      :first_name => "Charity",
-      :last_name => "Smith",
+      :first_name => first_name,
+      :last_name => last_name,
+      :email => email,
       :payment_method_nonce => nonce
     )
     

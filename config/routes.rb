@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'content/business'
   get 'content/travel'
   get 'content/science'
-  get 'content/Opinion'
+  get 'content/opinion'
   get 'content/technology'
   get 'content/health'
   get 'welcome/index'
