@@ -2,12 +2,21 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
-# apparently
+#login with Facebook & Twitter
+gem 'omniauth'
+
+#Handling API Callbacks
+gem 'unirest'
+
+#kieran gem
+gem 'open-weather'
+
 # for creating charts and graphs
 gem 'chartkick'
 #group date to make chartkick easiers
 gem 'groupdate'
-
+#HTTP for Location Data
+gem 'excon'
 #kieran test gem
 gem 'kieran_gem', '~> 10.0' #version 3  
 #gem 'image_magick' 
@@ -62,6 +71,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

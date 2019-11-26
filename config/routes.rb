@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_locations
+  get '/search' =>'user_locations#search'
   get 'data/index'
   get 'content/world'
   get 'content/politics'
