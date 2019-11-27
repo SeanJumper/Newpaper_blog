@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
   def index
-    puts "HOLY FUCK THE GEM WORKS ****************************"
-    #
+  
+  end
+  def weather
+    WeatherStation.new("Weather")
   end
 end

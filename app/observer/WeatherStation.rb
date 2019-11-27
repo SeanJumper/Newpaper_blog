@@ -19,7 +19,7 @@ class WeatherStation
         last_price = price
         notify_observers(Time.now, price)
       end
-      sleep 10
+      sleep 30
     end
   end
 end

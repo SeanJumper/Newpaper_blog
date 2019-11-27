@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'content/technology'
   get 'content/health'
   get 'welcome/index'
+  get 'welcome/weather'
 
  # match '/checkout' => 'checkout#create', via: :post
   devise_for :users

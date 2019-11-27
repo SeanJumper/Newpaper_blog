@@ -8,6 +8,10 @@ gem 'chartkick'
 #group date to make chartkick easiers
 gem 'groupdate'
 
+#weather API
+gem 'open-weather'
+
+
 #kieran test gem
 gem 'kieran_gem', '~> 10.0' #version 3  
 #gem 'image_magick' 
