@@ -1,4 +1,6 @@
 require "application_system_test_case"
+require 'minitest'
+require 'minitest/autorun'
 
 class PostsTest < ApplicationSystemTestCase
   setup do
