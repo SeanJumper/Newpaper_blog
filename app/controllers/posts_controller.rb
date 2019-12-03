@@ -11,6 +11,11 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    if current_user.subsId.nil?
+      p 'You pooor'
+    else
+      p current_user
+    end
   end
 
   # GET /posts/new
@@ -69,6 +74,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title,:body, :public, :Genre, :premium)
+      params.require(:post).permit(:title,:body, :public, :Genre, :premium, :description)
     end
 end
