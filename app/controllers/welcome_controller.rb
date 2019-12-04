@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
     end
     p "HERE****************************************************************************************************************************************************************************"
     p @postArr[5].body.embeds.find{|embeds| embeds.image?}
-    wait 10 
+    sleep 10 
     @postArr.clear
   end
 
