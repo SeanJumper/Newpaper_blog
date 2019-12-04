@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @postArr = []
+    @postArr.clear
 
     posts = Post.where(public:true)
 
@@ -8,9 +9,8 @@ class WelcomeController < ApplicationController
         @postArr << post
     end
     p "HERE****************************************************************************************************************************************************************************"
-    p @postArr[5].body.embeds.find{|embeds| embeds.image?}
-    sleep 30
-    @postArr.clear
+    p @postArr[0].body.embeds.find{|embeds| embeds.image?}
+    
   end
 
  
