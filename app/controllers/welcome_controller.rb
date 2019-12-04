@@ -1,8 +1,24 @@
 class WelcomeController < ApplicationController
   def index
-  
+    @postArr = []
+
+    posts = Post.where(Public:true)
+
+    posts.each do |post|
+        @postArr << post
+    end
+    p "HERE****************************************************************************************************************************************************************************"
+    p @postArr[5].body.embeds.find{|embeds| embeds.image?}
   end
+
+ 
+
+
+
+
+
   def weather
-    WeatherStation.new("Weather")
+    subject = WeatherStation.new("Weather")
+    
   end
 end

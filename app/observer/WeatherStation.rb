@@ -40,4 +40,4 @@ end
 
 
 weatherStation = WeatherStation.new("MSFT")
-#weatherStation.run
+weatherStation.run
