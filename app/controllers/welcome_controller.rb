@@ -18,7 +18,7 @@ class WelcomeController < ApplicationController
 
 
   def weather
-    subject = WeatherStation.new("Weather")
+    #subject = WeatherStation.new("Weather")
     
   end
 end
