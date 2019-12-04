@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   def index
     @postArr = []
 
-    posts = Post.where(Public:true)
+    posts = Post.where(public:true)
 
     posts.each do |post|
         @postArr << post
