@@ -13,14 +13,4 @@ class WelcomeController < ApplicationController
     
   end
 
- 
-
-
-
-
-
-  def weather
-    #subject = WeatherStation.new("Weather")
-    
-  end
 end

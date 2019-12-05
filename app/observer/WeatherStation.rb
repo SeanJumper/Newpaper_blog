@@ -17,17 +17,19 @@ class WeatherStation
       if price != last_price
         changed                 # notify observers
         last_price = price
-        notify_observers(Time.now, price)
+        p notify_observers(price)
+        break
       end
-      sleep 30
-    end
+     
+        end
+  
   end
 end
 
+
 class Price           
   def self.fetch(symbol)
-     Net::HTTP.get(URI.parse('https://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=b1b15e88fa797225412429c1c50c122a1'))  
-
+     Net::HTTP.get(URI.parse('https://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=b1b15e88fa797225412429c1c50c122a1')) 
   end
 end
 
@@ -39,5 +41,4 @@ end
 
 
 
-weatherStation = WeatherStation.new("MSFT")
-#weatherStation.run
+

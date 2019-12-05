@@ -62,5 +62,12 @@ class ContentController < ApplicationController
         # get all posts where genre = ^ and public = true
         @posts = Post.where(Genre:'health',Public:true)
   end
+
+  def weather
+      @app = WeatherStation.new('weather')
+      @app.notify_observers
+      p @app
+      
+    end
   
 end

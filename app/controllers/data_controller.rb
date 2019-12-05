@@ -1,7 +1,11 @@
 class DataController < ApplicationController
   #encoding: utf-8
-before_action :authenticate_user!
-before_action :authenticate_admin!
+require 'uri'
+require 'net/http'
+require 'openssl'
+require 'open_weather'
+#before_action :authenticate_user!
+#before_action :authenticate_admin!
 def authenticate_admin!
   # check if current user is admin
   unless current_user.admin?
@@ -44,6 +48,23 @@ end
 
   end # end of the index 
 
+  def admin
+  url = URI("https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/")
+
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  
+  request = Net::HTTP::Get.new(url)
+  request["x-rapidapi-host"] = 'ip-geolocation-ipwhois-io.p.rapidapi.com'
+  request["x-rapidapi-key"] = '5c444575acmsh3113ee9996424cbp14c28cjsn73363038f5dc'
+  
+  @response = http.request(request)
+  @x = @response.read_body
+  @y = JSON.parse(@x) 
+  puts @y
+  
+  end
   
   
 end
