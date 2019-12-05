@@ -14,7 +14,7 @@ class ContentController < ApplicationController
   def sport
       # this condition selects all from the post where Sport is the Genre and Public is true 
       # SELECT "posts".* FROM "posts" WHERE "posts"."Genre" = ? AND "posts"."Public" = ?  [["Genre", "Sport"], ["Public", 1]]
-      @posts = Post.where(Genre:'Sport',Public:true)
+      @posts = Post.where(Genre:'Sport',public:true)
       
   end
 
@@ -38,7 +38,7 @@ class ContentController < ApplicationController
 
   def travel
         # get all posts where genre = ^ and public = true
-        @posts = Post.where(Genre:'travel',Public:true)
+        @posts = Post.where(Genre:'Travel',public:true)
 
   end
 
