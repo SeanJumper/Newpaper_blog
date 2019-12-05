@@ -26,7 +26,7 @@ class ContentController < ApplicationController
 
   def culture
         # get all posts where genre = ^ and public = true
-        @posts = Post.where(Genre:'culture',Public:true)
+        @posts = Post.where(Genre:'culture',public:true)
 
   end
 
