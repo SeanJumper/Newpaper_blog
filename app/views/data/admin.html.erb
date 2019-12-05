@@ -12,5 +12,30 @@
         
       </dl>
     </div>
+    <button type="button" id="p" class="btn btn-primary">Make Me an Admin</button>
+    <br>
+    <button type="button" id="x" class="btn btn-success">Make Me an Journalist</button>
+    <%=@user%>
+
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script>
+$("#p").click(function(){
+     $.ajax({
+              type:'GET',
+              url:'/data/update_current_user_to_admin'
+              });
+});
+
+</script>
+<script>
+$("#x").click(function(){
+     $.ajax({
+              type:'GET',
+              url:'/data/update_current_user_to_journalist'
+              });
+});
+</script>
 </div>

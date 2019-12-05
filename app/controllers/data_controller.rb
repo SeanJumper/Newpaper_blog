@@ -65,6 +65,24 @@ end
   puts @y
   
   end
+
+  def update_current_user_to_admin
+    id = current_user.id
+    @user = User.find(id)
+
+    @user.update_columns(admin: true)
+    p "triggered with an ajax call"
+    p @user
+  end
+
+  def update_current_user_to_journalist
+    id = current_user.id
+    @user = User.find(id)
+
+    @user.update_columns(journalist: true)
+    p "triggered with an ajax call"
+    p @user
+  end
   
   
 end
