@@ -65,8 +65,11 @@ class ContentController < ApplicationController
 
   def weather
       @app = WeatherStation.new('weather')
-      @app.notify_observers
-      p @app
+      @app.run
+      @response = @app.getInfo
+      p "THIS IS THE CONTROLLER ************************************************************************************"
+      p @response
+      
       
     end
   
