@@ -80,7 +80,7 @@
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic"><%=@postArr[0].title%></h1>
-      <p class="lead my-3"><%=@postArr[0].body%></p>
+      <p class="lead my-3"><%=@postArr[0].description%></p>
       
       <%= link_to "Continue Reading", "/posts/#{@postArr[0].id}" %>
 
@@ -92,16 +92,17 @@
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
+          <strong class="d-inline-block mb-2 text-primary">Featured</strong>
+          <h3 class="mb-0"><%=@postArr[1].title%></h3>
+          <div class="mb-1 text-muted"><%=@postArr[1].created_at%></div>
+          <p class="card-text mb-auto"><%=@postArr[1].description%></p>
+                <%= link_to "Continue Reading", "/posts/#{@postArr[1].id}" %>
+
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="10" height="10" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-           <% if @postArr[0].body.embeds.find{|embeds| embeds.image?}.representable? %>
-              <%= image_tag @postArr[0].body.embeds.find{|embeds| embeds.image?}.representation(resize_to_limit: [ 200, 200 ] ) %>
+           <% if @postArr[1].body.embeds.find{|embeds| embeds.image?}.representable? %>
+              <%= image_tag @postArr[1].body.embeds.find{|embeds| embeds.image?}.representation(resize_to_limit: [ 200, 200 ] ) %>
             <% end %>
           </svg>
         </div>
@@ -110,16 +111,17 @@
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
+          <strong class="d-inline-block mb-2 text-success">Featured</strong>
+          <h3 class="mb-0"><%=@postArr[2].title%></h3>
+          <div class="mb-1 text-muted"><%=@postArr[2].created_at%></div>
+          <p class="mb-auto"><%=@postArr[2].description%></p>
+                <%= link_to "Continue Reading", "/posts/#{@postArr[2].id}" %>
         </div>
-        <div class="col-auto d-none d-lg-block">
-<% if @postArr[0].body.embeds.find{|embeds| embeds.image?}.representable? %>
-              <%= image_tag @postArr[0].body.embeds.find{|embeds| embeds.image?}.representation(resize_to_limit: [ 200, 200 ] ) %>
-            <% end %>        </div>
+        <div class="col-auto d-none d-lg-block">  
+            <% if @postArr[2].body.embeds.find{|embeds| embeds.image?}.representable? %>
+              <%= image_tag @postArr[2].body.embeds.find{|embeds| embeds.image?}.representation(resize_to_limit: [ 200, 200 ] ) %>
+            <% end %>        
+            </div>
       </div>
     </div>
   </div>
@@ -129,7 +131,7 @@
   <div class="row">
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
-        From the Firehose
+          Trending Articles
       </h3>
 
       <div class="blog-post">
