@@ -3,44 +3,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    
 
     <title>Checkout example for Bootstrap</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
 
-    <div class="container">
+    
       <div class="py-5 text-center">
-        
         <h2>Subscription</h2>
         <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-      </div>
+      </div>  
 
-      <div class="container-fluid">
-        <div class="col-md-4 order-md-2 mb-4">
-          
-        
-            
-           
-          
-             
-            
-
-         
-        </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Billing address</h4>
-          <form class="needs-validation" novalidate>
-            <div class="row">
+         
+            
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
                 <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
@@ -48,6 +28,8 @@
                   Valid first name is required.
                 </div>
               </div>
+              
+
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
                 <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
@@ -55,7 +37,7 @@
                   Valid last name is required.
                 </div>
               </div>
-            </div>
+            
 
         
 
@@ -80,8 +62,8 @@
            
 
             <h4 class="mb-3">Payment</h4>
-            <div class="wrapper">
-  <div class="checkout container">
+    
+  
     
 
       <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
@@ -97,9 +79,7 @@
       <% end %>
 
           
-        </div>
-      </div>
-
+       
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2017-2018 Company Name</p>
         <ul class="list-inline">
@@ -108,38 +88,8 @@
           <li class="list-inline-item"><a href="#">Support</a></li>
         </ul>
       </footer>
-    </div>
+   
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-    </script>
   </body>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.20.4/js/dropin.min.js"></script>
