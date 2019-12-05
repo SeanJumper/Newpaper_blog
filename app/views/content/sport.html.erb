@@ -1,36 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<table>
+<div class="container-fluid">
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Premium</th>
+      <th scope="col">Created At</th>
     </tr>
-  
   </thead>
-
-
+  <tbody>
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <div class="container">
         <td><%= post.title %></td>
-        </div>
-        <div class="container">
         <td><%= post.description %></td>
-        </div>
-        <td><%= post.Genre %></td>
         <td><%= post.premium %></td>
+        <td><%= post.created_at %></td>
       
         <td><%= link_to 'Show', post %></td>
-
+      
       </tr>
     <% end %>
   </tbody>
+    
+     
+   
+  </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<div>
