@@ -16,7 +16,7 @@ def authenticate_admin!
 end
 
   def index  
-  @words = []
+    @words = []
   @cleanWords =[]
     # SELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?  [["record_id", 10], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
   sql = "SELECT body from action_text_rich_texts WHERE body IS NOT NULL "
@@ -49,6 +49,8 @@ end
   end # end of the index 
 
   def admin
+    subscription_seach()
+
   url = URI("https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/")
 
   http = Net::HTTP.new(url.host, url.port)
@@ -63,6 +65,7 @@ end
   @x = @response.read_body
   @y = JSON.parse(@x) 
   puts @y
+
   
   end
 
@@ -83,6 +86,25 @@ end
     p "triggered with an ajax call"
     p @user
   end
+
+  def gateway
+    @gateway = Braintree::Gateway.new(
+      :environment => :sandbox,
+      :merchant_id => 'g82dbc9xdvtp4yx9',
+      :public_key => '7gnp3pdhks7bfsr6',
+      :private_key => 'c35c38c1ce0eb6b9643e273347de08fa',
+    )
+    end
+
+    def subscription_seach
+     @collection = gateway.subscription.search do |search|
+        search.plan_id.is "KieransPlan"
+      end
+      @collection.each do |subscription|
+        puts subscription.id, subscription.status
+      end
+    end
+
   
   
 end

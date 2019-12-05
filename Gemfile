@@ -12,6 +12,8 @@ gem 'groupdate'
 gem 'open-weather'
 
 
+
+
 #kieran test gem
 gem 'kieran_gem', '~> 10.0' #version 3  
 #gem 'image_magick' 

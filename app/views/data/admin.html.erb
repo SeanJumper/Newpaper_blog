@@ -15,7 +15,9 @@
     <button type="button" id="p" class="btn btn-primary">Make Me an Admin</button>
     <br>
     <button type="button" id="x" class="btn btn-success">Make Me an Journalist</button>
-    <%=@user%>
+    <br>
+    <button type="button" id="z"class="btn btn-danger">Check Subscriptions</button>
+
 
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -38,4 +40,21 @@ $("#x").click(function(){
               });
 });
 </script>
+<script>
+$( window ).on( "load", function() {
+     $.ajax({
+              type:'GET',
+              url:'/data/subscription_seach'
+              });
+
+</script>
+</div>
+
+<div class="container">
+  <% @collection.each do |post| %>
+      <tr>
+        <td><%= post.id %></td>
+        <td><%= post.status %></td>
+  <% end %>
+
 </div>

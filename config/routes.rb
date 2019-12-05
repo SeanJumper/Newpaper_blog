@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'data/admin'
   get '/data/update_current_user_to_admin'
   get '/data/update_current_user_to_journalist'
+  get '/data/subscription_seach'
 
  # match '/checkout' => 'checkout#create', via: :post
   devise_for :users
