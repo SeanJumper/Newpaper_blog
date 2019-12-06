@@ -21,9 +21,7 @@ end
     # SELECT "action_text_rich_texts".* FROM "action_text_rich_texts" WHERE "action_text_rich_texts"."record_id" = ? AND "action_text_rich_texts"."record_type" = ? AND "action_text_rich_texts"."name" = ? LIMIT ?  [["record_id", 10], ["record_type", "Post"], ["name", "body"], ["LIMIT", 1]]
   sql = "SELECT body from action_text_rich_texts WHERE body IS NOT NULL "
   @result = ActiveRecord::Base.connection.execute(sql)
-  #p @result.class = array
 
-  #Kieran_gem.hi(@result)    
  @cleanWords = Kieran_gem.hi(@result)
 
  p @cleanWords.class
@@ -50,7 +48,7 @@ end
   end # end of the index 
 
   def admin
-    subscription_seach()
+  subscription_seach()
 
   url = URI("https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/")
 

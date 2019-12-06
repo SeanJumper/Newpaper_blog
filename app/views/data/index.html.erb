@@ -1,16 +1,23 @@
+<h4>Top 10 Most Popular Words</h4>
+<br>
 <div class="container-fluid">
 <canvas id="myChart" width="930" height="300" class="chartjs-render-monitor" style="display: block; width: 930px; height: 300px;"></canvas>
 </div>
 <br>
-
+<h4>Posts by Date Created</h4>
+<br>
 <div class="chartjs-render-monitor" >
 <%= line_chart Post.group_by_day(:created_at).count %>
 </div>
+<br>
+
+<h4>Users by Date Created</h4>
 <br>
 <div class="container-fluid" class="chartjs-render-monitor" style="display: block; width: 930px; height: 300px;">
 <%= pie_chart User.group_by_day(:created_at).count %>
 </div>
 <br>
+
 
 <script>
 
@@ -21,7 +28,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels:<%= raw @keys.take(10).reverse%>,
         datasets: [{
-            label: '# of Votes',
+            label: '# of Occurances',
             data: <%= raw @values.take(10).reverse%>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
