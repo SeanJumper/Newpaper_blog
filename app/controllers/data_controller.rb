@@ -43,8 +43,9 @@ end
   # end of sort
  @hCount.delete('""')
 
- puts @hCount
-    
+ @values = @hCount.values.to_a
+ @keys = @hCount.keys.to_a
+    p @values,@keys
 
   end # end of the index 
 
@@ -101,7 +102,7 @@ end
         search.plan_id.is "KieransPlan"
       end
       @collection.each do |subscription|
-        puts subscription.id, subscription.status, subscription.created_at, subscription.plan_id
+        puts subscription.id, subscription.status, subscription.created_at, subscription.price
       end
     end
 
