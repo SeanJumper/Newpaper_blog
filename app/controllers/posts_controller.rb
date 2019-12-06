@@ -5,23 +5,25 @@ before_action :set_post, only: [:show, :edit, :update, :destroy]
 def authenticate_admin!
   # check if current user is admin
   unless current_user.journalist?
-    # if current_user is not admin redirect to some route
+    # if current_user is not journalist redirect to some route
     redirect_to '/'
   end
-  # if current_user is admin he will proceed to edit action
+  # if current_user is journalis he will proceed to edit action
 end
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    id =current_user.id
+    @user = User.find(id)
+    @posts = @user.posts
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    p @post
+    
   end
 
   # GET /posts/new
