@@ -15,15 +15,15 @@ end
   # GET /posts
   # GET /posts.json
   def index
-    id =current_user.id
-    @user = User.find(id)
-    @posts = @user.posts
-  end
+    id = current_user.id
+    @posts =Post.where(user_id:id)
+    end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    
+    id = current_user.id
+    @posts =Post.where(user_id:id)
   end
 
   # GET /posts/new
