@@ -101,7 +101,7 @@ end
         search.plan_id.is "KieransPlan"
       end
       @collection.each do |subscription|
-        puts subscription.id, subscription.status
+        puts subscription.id, subscription.status, subscription.created_at, subscription.plan_id
       end
     end
 

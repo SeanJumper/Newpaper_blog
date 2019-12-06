@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'content/weather'
   get 'data/admin'
-  get '/data/update_current_user_to_admin'
-  get '/data/update_current_user_to_journalist'
+  post '/data/update_current_user_to_admin'
+  post '/data/update_current_user_to_journalist'
   get '/data/subscription_seach'
 
  # match '/checkout' => 'checkout#create', via: :post
