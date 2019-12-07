@@ -1,30 +1,59 @@
 class PostsController < ApplicationController
-before_action :authenticate_user!
-before_action :authenticate_admin!
+before_action :authenticate_user! ,only:[ :new, :edit, :update, :destroy]
+before_action :authenticate_admin!, only:[:new, :show, :edit, :update, :destroy]
 before_action :set_post, only: [:show, :edit, :update, :destroy]
 def authenticate_admin!
+  if user_signed_in?
   # check if current user is admin
   unless current_user.journalist?
     # if current_user is not journalist redirect to some route
     redirect_to '/'
   end
+end
   # if current_user is journalis he will proceed to edit action
 end
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+ 
 
   # GET /posts
   # GET /posts.json
   def index
-    id = current_user.id
-    @posts =Post.where(user_id:id)
+    if user_signed_in?
+    @id = current_user.id
+    @posts =Post.where(user_id:@id)
+    else
+      redirect_to '/'
+    end
     end
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
-   
+  def show 
+    if user_signed_in? 
+    @id = current_user.id
+    @post = Post.find(params[:id])
+    @user = User.find(@id)
+    ## if user isn't the current user and the post is false redirect to whatever
+    if (@post.user_id != @id)&&(@post.public === false)
+      redirect_to "http://www.rubyonrails.org"
+    end 
+    ## if the reader doesn't have a premium subscription redirect 
+    @subscription = @user.subsId 
+    if (@subscription.nil?)&&(@post.premium ===true)
+      redirect_to "https://www.w3schools.com/css/css3_animations.asp"
+    end
 
+    else
+      @post = Post.find(params[:id])
+     # @post = Post.where(premium:false,public:true)
+      if(@post.public == true)&&(@post.premium == false)
+      p '*****************************************************************'
+      p 'no user signed in'
+      else
+        redirect_to "https://www.youtube.com/"
+      end
+    end
   end
+
 
   # GET /posts/new
   def new

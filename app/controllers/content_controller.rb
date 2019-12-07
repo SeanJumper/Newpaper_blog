@@ -60,7 +60,7 @@ class ContentController < ApplicationController
 
   def health
         # get all posts where genre = ^ and public = true
-        @posts = Post.where(Genre:'health',public:true)
+        @posts = Post.where(Genre:'Health',public:true)
   end
 
   def weather
