@@ -22,7 +22,7 @@ end
   sql = "SELECT body from action_text_rich_texts WHERE body IS NOT NULL "
   @result = ActiveRecord::Base.connection.execute(sql)
 
- @cleanWords = Kieran_gem.hi(@result)
+ @cleanWords = KayShawn.hi(@result)
 
  p @cleanWords.class
 

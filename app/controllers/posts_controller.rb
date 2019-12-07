@@ -22,8 +22,8 @@ end
   # GET /posts/1
   # GET /posts/1.json
   def show
-    id = current_user.id
-    @posts =Post.where(user_id:id)
+   
+
   end
 
   # GET /posts/new
@@ -39,6 +39,7 @@ end
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
+    @post.user = current_user
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }

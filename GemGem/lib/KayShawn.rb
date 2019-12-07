@@ -1,4 +1,4 @@
-class Kieran_gem
+class KayShawn
 
   def self.hi(text)
     
