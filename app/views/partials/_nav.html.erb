@@ -10,11 +10,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/posts">Create and View your Content</a>
       </li>
-   
+         <%if current_user.admin == true%>
+
       <li class="nav-item">
         <a class="nav-link " href="/data/admin" tabindex="-1" a>Data-Admin Area</a>
       </li>
+      <%end%>
     </ul>
+    
     
     <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
