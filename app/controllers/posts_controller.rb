@@ -34,22 +34,21 @@ end
     @user = User.find(@id)
     ## if user isn't the current user and the post is false redirect to whatever
     if (@post.user_id != @id)&&(@post.public === false)
-      redirect_to "http://www.rubyonrails.org"
+      redirect_to "/"
     end 
     ## if the reader doesn't have a premium subscription redirect 
     @subscription = @user.subsId 
     if (@subscription.nil?)&&(@post.premium ===true)
-      redirect_to "https://www.w3schools.com/css/css3_animations.asp"
+      redirect_to "/checkouts/new"
     end
 
     else
       @post = Post.find(params[:id])
-     # @post = Post.where(premium:false,public:true)
+     
       if(@post.public == true)&&(@post.premium == false)
-      p '*****************************************************************'
       p 'no user signed in'
       else
-        redirect_to "https://www.youtube.com/"
+        redirect_to "/checkouts/new"
       end
     end
   end

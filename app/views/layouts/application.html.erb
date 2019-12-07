@@ -10,9 +10,15 @@
   </head>
 
   <body>
-  <%= render partial: "partials/nav" %>
+  <%= if user_signed_in?
+    if (current_user.journalist == true) || (current_user.admin == true)
+    render partial: "partials/nav" 
+    end
+  end%>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+  
+  <%= yield %>
   </body>
 </html>

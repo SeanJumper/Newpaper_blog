@@ -1,26 +1,36 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-  <br>
-  <strong>Description:</strong>
-  <%= @post.description %>
-  <br>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-<p>
-  <strong>Public:</strong>
-  <%= @post.public %>
-</p>
-<p>
-  <strong>Genre:</strong>
-  <%= @post.Genre %>
-</p>
-<p>
-  <strong>premium:</strong>
-  <%= @post.premium %>
-</p>
+<div class = 'container-fluid' align="justify">
 
+<p>
+  
+ <h2> <%= @post.title %></h2>
+ <h4>
+  <br>
+  <small class="text-muted"><%= @post.description %></small>
+  <br>
+  </h4>
+  
+  <%= @post.body %>
+ 
+
+|<em>Public: </em>  <%= @post.public %> |
+
+<em>     Genre: </em>  <%= @post.Genre %> |
+
+<em>     Premium: </em>  <%= @post.premium %> |
+<p>
+
+ 
+  
+
+<%if user_signed_in?%>
+<%if current_user.id == @post.user_id%>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+<%else%>
+<%= link_to 'Back', posts_path %>
+<%end%>
+<%else%>
+<%= link_to 'Back', posts_path %>
+<%end%>
+</div>

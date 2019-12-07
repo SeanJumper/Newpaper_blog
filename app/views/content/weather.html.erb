@@ -43,7 +43,7 @@ $( document ).ready(function() {
      <div class="row">
     <div class="col">
     <h4>Wind Speed:</h4>
-    <%=  @response["list"][0]["wind"]["speed"]%> Kmph
+    <%=  @response["list"][0]["wind"]["speed"]%> kmph
     </div>
     </div>
      <br>
@@ -57,3 +57,4 @@ $( document ).ready(function() {
   </div>
 </div>
 </div>
+<h4><%= link_to 'Back', welcome_index_path %></h4>
