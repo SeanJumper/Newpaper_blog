@@ -4,13 +4,13 @@ require 'net/http'
 
 class WeatherStation          
   include Observable
-  @@update = []
+  @@update = nil
   def initialize(symbol)
     @symbol = symbol
   end
 
   def run
-    @@update.clear
+   
     last_price = nil
     loop do
       price = Price.fetch(@symbol)
@@ -18,7 +18,7 @@ class WeatherStation
         changed                 # notify observers
         last_price = price
         notify_observers(price)
-        @@update << price
+        @@update = price
         break
       end
     end
@@ -28,11 +28,12 @@ class WeatherStation
   end
 
   def getInfo
-    p @@update
+    @@hash = JSON.parse(@@update)
+    p @@hash
    
   end
   def clear
-    @@update.clear
+    
     p "EMPYT ARRAY BEFORE REFRESH *********************************************************************************"
     p "*********************************************************************************"
     p "*********************************************************************************"
