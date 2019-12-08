@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-before_action :authenticate_user! ,only:[ :index,:new, :edit, :update, :destroy]
-before_action :authenticate_admin!, only:[:new, :edit, :update, :destroy]
-before_action :set_post, only: [:show, :edit, :update, :destroy]
+#before_action :authenticate_user! ,only:[ :index,:new, :edit, :update, :destroy]
+#before_action :authenticate_admin!, only:[:new, :edit, :update, :destroy]
+#before_action :set_post, only: [:show, :edit, :update, :destroy]
 def authenticate_admin!
   if user_signed_in?
   # check if current user is admin
