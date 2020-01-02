@@ -10,10 +10,9 @@ gem 'groupdate'
 
 #weather API
 gem 'open-weather'
-
-
 #kieran test gem
-gem 'kieran_gem', '~> 10.0' #version 3  
+#gem 'kieran_gem', '~> 10.0' #version 3  
+gem 'KayShawn', '~> 14.0'
 #gem 'image_magick' 
 #auth 
 gem 'devise'
@@ -24,7 +23,7 @@ gem 'jquery-rails'
 # Bootstap the application
 gem 'bootstrap', '~> 4.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+#gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -56,6 +55,8 @@ group :development, :test do
 end
 
 group :development do
+      gem 'sqlite3'
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
@@ -70,3 +71,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  
+  group :production do
+    gem 'pg'
+    gem 'rails_12factor'
+  end

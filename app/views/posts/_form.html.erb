@@ -1,3 +1,4 @@
+<div class="container" align ="justify" >
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -11,32 +12,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
+  <div class="form-group">
+   <%= form.label :title %>
     <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.rich_text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :public %>
-    <%= form.check_box :public %>
-  </div>
-
-  <div class="field">
-    <%= form.label :premium %>
-    <%= form.check_box :premium %>
-  </div>
-
-  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
     <%= form.label :Genre %>
     <%= form.select(:Genre, options_for_select([['Sport',], ['World'], ['Business'], ['Culture'], ['Design'], ['Politics'], ['Opinion'], ['Science'], ['Health'], ['Travel'], ['Technology']])) %>
   </div>
 
+  <div class="form-group">
+  
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :body %>
+    <%= form.rich_text_area :body %>
+
+  </div>
+ 
+
+  <div class="form-group">
+  <%= form.label :premium %>
+  <%= form.check_box :premium %>
+  <%= form.label :public %>
+  <%= form.check_box :public %>
+  </div>
+   
   <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
+  <% end %>
+</div>
